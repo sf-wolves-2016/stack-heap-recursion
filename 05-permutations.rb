@@ -9,30 +9,9 @@ require 'rspec'
 
 # print all possible permutations
 def permutations(str, position=0)
-  puts str if position == str.length - 1
-
-  # try each character that we haven't used yet in current position
-  (position...str.length).step do |num|
-    next_str = str.dup
-    # make the char at position be the char at num and vice versa
-    next_str[position] = str[num]
-    next_str[num] = str[position]
-    # cute trick
-    # next_str[position], next_str[num] = next_str[num], next_str[position]
-    permutations(next_str, position + 1)
-  end
 end
 # permutations("abc", 0)
 
-# alternative approach
-# def permutations(remaining_chars, so_far="")
-#   puts so_far if remaining_chars.length == 0
-
-#   # call permutations with each of the remaining characters tacked on to so_far
-#   remaining_chars.each_char do |char|
-#     permutations(remaining_chars.delete(char), char + so_far)
-#   end
-# end
 
 permutations("abc")
 require_relative "lib"

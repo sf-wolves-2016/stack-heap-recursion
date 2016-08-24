@@ -1,34 +1,38 @@
 # to use pry, do the following:
 # gem install pry-byebug
-require 'pry'
+# require 'pry'
 require 'rspec'
 
-# reverse_string("hello") => "olleh"
 
 # def reverse_string(str)
-#   # if the string is less than one character,
-#     # return the string
+#   # what's the base case?
 #   return str if str.length <= 1
-#   # split in half, call on each half
-#   first_half = str[0...str.length/2]
-#   second_half = str[str.length/2..-1]
-#   # reverse the order of the two sides
-#   reverse_string(second_half) + reverse_string(first_half)
+#   # what's the recursive leap of faith?
+#   # need to call ourselves on something smaller each time
+#   # take first = h and last = o, middle "ell"
+#   first = str[0]
+#   last = str[-1]
+#   middle = str[1..-2]
+#   # call yourself on the middle - lle
+#   # put first last, last first, middle in the middle
+#   last + reverse_string(middle) + first
 # end
 
 def reverse_string(str)
-  # if the string is less than one character,
-    # return the string
   return str if str.length <= 1
-  # split in half, call on each half
-  first_letter = str[0]
-  rest = str[1..-1]
-  # reverse the order of the two sides
-  reverse_string(rest) + first_letter
+  first = str[0]
+  rev = reverse_string(str[1..-1])
+  rev + first
 end
 
-puts reverse_string("abcd")
-# puts reverse_string("h")
+puts reverse_string("cat")
+# puts reverse_string("hello")
+# hello
+# reverse(ello) + h => olleh
+# reverse(llo) + e => olle
+# reverse(lo) + l => oll
+# reverse(o) + l => ol
+# reverse(o) => o
 
 describe "#reverse_string" do
   it "should leave a single-character string as-is" do
